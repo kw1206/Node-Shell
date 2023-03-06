@@ -6,9 +6,13 @@ process.stdin.on('data', (data) => {
   const cmd = data.toString().trim(); //remove the newline
 
   process.stdout.write('You typed: ' + cmd);
+  if (cmd === "pwd") {
+    process.stdout.write('\n');
+    pwd();
+  }
   process.stdout.write('\nprompt > ');
 });
 
-const { cwd } = require('node:process');
+const pwd = require('./pwd');
 
-console.log(`Current directory: ${cwd()}`);
+// pwd();
